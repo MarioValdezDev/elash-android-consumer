@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Project level updates.
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+    reviewers:
+      - "MarioValdezDev"
+
+  # App Module level updates.
+  - package-ecosystem: gradle
+    directory: "/app"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+    reviewers:
+      - "MarioValdezDev"
