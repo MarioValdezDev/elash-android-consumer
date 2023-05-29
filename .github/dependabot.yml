@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     labels:
       - "dependencies"
     reviewers:
@@ -14,7 +14,7 @@ updates:
   - package-ecosystem: gradle
     directory: "/app"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     labels:
       - "dependencies"
     reviewers:
