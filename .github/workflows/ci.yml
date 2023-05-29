@@ -1,29 +1,28 @@
-name: Android CI
+name: CI 🔄✅
 
 on:
   pull_request:
-  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: 🛫 Checkout
         uses: actions/checkout@v3
 
-      - name: Set UP JDK 11
+      - name: ⚙ Setup JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: gradle
 
-      - name: Setup Gradle
+      - name: ⚙ Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - name: Grant Execute Permission for gradlew
+      - name: © Grant Execute Permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build App
+      - name: 🎮🕹 Build App
         run: ./gradlew assemble
