@@ -2,6 +2,11 @@ package mx.mariovaldez.elashstudioapp.di
 
 import android.content.Context
 import androidx.room.Room
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import mx.mariovaldez.elashstudioapp.data.source.ElashDatabase
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.CheckDao
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.ConsumerDao
@@ -10,16 +15,11 @@ import mx.mariovaldez.elashstudioapp.data.source.local.dao.OccupationsDao
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.ProductDao
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.SaleDao
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.UserDao
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DatabaseModule {
+object DataModules {
 
     @Singleton
     @Provides
@@ -51,5 +51,4 @@ object DatabaseModule {
 
     @Provides
     fun providesProductDao(database: ElashDatabase): ProductDao = database.productDao()
-
 }

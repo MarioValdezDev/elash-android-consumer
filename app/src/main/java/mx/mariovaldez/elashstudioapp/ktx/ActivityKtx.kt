@@ -16,7 +16,7 @@ import androidx.viewbinding.ViewBinding
 import mx.mariovaldez.elashstudioapp.app.domain.models.AppPermission
 
 inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
-    crossinline bindingInflater: (LayoutInflater) -> T,
+    crossinline bindingInflater: (LayoutInflater) -> T
 ) = lazy(LazyThreadSafetyMode.NONE) {
     bindingInflater.invoke(layoutInflater)
 }
@@ -39,19 +39,19 @@ fun AppCompatActivity.shouldShowRequestAppPermissionRationale(permission: AppPer
 
 fun AppCompatActivity.registerActionsForAppPermissionRequest(
     onGuaranteed: () -> Unit,
-    onDenied: () -> Unit,
+    onDenied: () -> Unit
 ): ActivityResultLauncher<String> = registerForActivityResult(RequestPermission()) { isGranted ->
     if (isGranted) onGuaranteed() else onDenied()
 }
 
 fun AppCompatActivity.launchAppPermissionRequest(
     requestPermissionLauncher: ActivityResultLauncher<String>,
-    permission: AppPermission,
+    permission: AppPermission
 ) = requestPermissionLauncher.launch(permission.name)
 
 fun AppCompatActivity.requestAppPermissions(
     vararg appPermission: AppPermission,
-    requestCode: Int,
+    requestCode: Int
 ) = requestPermissions(appPermission.map { it.name }.toTypedArray(), requestCode)
 
 fun AppCompatActivity.clearAnimationTransition(): Unit = overridePendingTransition(0, 0)

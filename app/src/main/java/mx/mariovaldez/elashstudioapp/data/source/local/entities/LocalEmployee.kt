@@ -14,6 +14,5 @@ data class LocalEmployee(
     val secondLastName: String,
     val bornDate: String,
     val idOccupation: String,
-    val cellphone: String,
-) {
-}
+    val cellphone: String
+)

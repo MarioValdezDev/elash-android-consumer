@@ -11,7 +11,7 @@ data class OcuppationWithEmployees(
         parentColumn = "idEmployee",
         entityColumn = "idOccupation"
     )
-    val occupation: LocalOccupation,
+    val occupation: LocalOccupation
 )
 
-//create transaction
+// create transaction

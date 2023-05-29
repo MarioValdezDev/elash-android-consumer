@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import mx.mariovaldez.code_challenge.ui.delegates.FragmentViewBindingDelegate
 import mx.mariovaldez.elashstudioapp.app.domain.models.AppPermission
+import mx.mariovaldez.elashstudioapp.ui.delegates.FragmentViewBindingDelegate
 
 fun <T : ViewBinding> Fragment.viewBinding(viewBindingFactory: (View) -> T) =
     FragmentViewBindingDelegate(this, viewBindingFactory)
@@ -28,16 +28,15 @@ fun Fragment.shouldShowRequestAppPermissionRationale(permission: AppPermission):
 
 fun Fragment.registerActionsForAppPermissionRequest(
     onGuaranteed: () -> Unit,
-    onDenied: () -> Unit,
+    onDenied: () -> Unit
 ): ActivityResultLauncher<String> = registerForActivityResult(RequestPermission()) { isGranted ->
     if (isGranted) onGuaranteed() else onDenied()
 }
 
 fun Fragment.launchAppPermissionRequest(
     requestPermissionLauncher: ActivityResultLauncher<String>,
-    permission: AppPermission,
+    permission: AppPermission
 ) = requestPermissionLauncher.launch(permission.name)
-
 
 fun Fragment.shareImageFromUri(uri: Uri) =
     (requireActivity() as? AppCompatActivity)?.shareImageFromUri(uri)

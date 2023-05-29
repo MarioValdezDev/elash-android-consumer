@@ -1,12 +1,12 @@
 package mx.mariovaldez.elashstudioapp.data.repository
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import mx.mariovaldez.elashstudioapp.data.source.local.dao.EmployeeDao
 import mx.mariovaldez.elashstudioapp.data.source.local.entities.LocalEmployee
 import mx.mariovaldez.elashstudioapp.di.DefaultDispatcher
 import mx.mariovaldez.elashstudioapp.util.createId
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class DefaultEmployeeRepository @Inject constructor(
@@ -27,7 +27,6 @@ class DefaultEmployeeRepository @Inject constructor(
         idOccupation: String,
         cellphone: String
     ): String {
-
         val idEmployee = withContext(dispatcher) {
             createId()
         }
