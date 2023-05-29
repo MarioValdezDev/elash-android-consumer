@@ -13,6 +13,5 @@ data class LocalConsumer(
     val consumerLastName: String,
     val consumerSecondLastName: String,
     val bornDate: String,
-    val cellphone: String,
-){
-}
+    val cellphone: String
+)

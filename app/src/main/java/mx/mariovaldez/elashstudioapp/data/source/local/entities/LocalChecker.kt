@@ -7,11 +7,10 @@ import androidx.room.PrimaryKey
     tableName = "checker"
 )
 data class LocalChecker(
-    @PrimaryKey val idCheck:String,
+    @PrimaryKey val idCheck: String,
     val idEmployee: String,
     val latitude: String,
     val longitude: String,
     val fullDate: String,
-    val deviceId: String,
-){
-}
+    val deviceId: String
+)

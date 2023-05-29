@@ -34,15 +34,15 @@ fun Context.hideKeyboard(view: View) {
 }
 
 fun Context.findDrawable(
-    @DrawableRes id: Int,
+    @DrawableRes id: Int
 ): Drawable? = ContextCompat.getDrawable(this, id)
 
 fun Context.findColorInt(
-    @ColorRes id: Int,
+    @ColorRes id: Int
 ): Int = ContextCompat.getColor(this, id)
 
 fun Context.findFont(
-    @FontRes id: Int,
+    @FontRes id: Int
 ) = ResourcesCompat.getFont(this, id)
 
 fun Context.showSmallLengthToast(text: String) {
@@ -54,5 +54,5 @@ fun Context.showLongLengthToast(text: String) {
 }
 
 fun Context.findStringArray(
-    id: Int,
+    id: Int
 ): Array<String> = applicationContext.resources.getStringArray(id)

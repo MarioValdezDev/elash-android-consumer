@@ -13,20 +13,18 @@ data class ProductWithSales(
 
     @Relation(
         parentColumn = "idProduct",
-        entityColumn = "idProduct",
+        entityColumn = "idProduct"
     ) val product: LocalProduct,
 
     @Relation(
         parentColumn = "idProduct",
-        entityColumn = "idProduct",
+        entityColumn = "idProduct"
     )
-
     val employee: LocalEmployee,
 
     @Relation(
         parentColumn = "idConsumer",
-        entityColumn = "idConsumer",
+        entityColumn = "idConsumer"
     )
-
-    val consumer: LocalConsumer,
-) {}
+    val consumer: LocalConsumer
+)

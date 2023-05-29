@@ -8,6 +8,5 @@ import androidx.room.PrimaryKey
 )
 data class LocalOccupation(
     @PrimaryKey val idOccupation: String,
-    val occupationName: String,
-) {
-}
+    val occupationName: String
+)

@@ -11,10 +11,10 @@ import javax.inject.Inject
 @Reusable
 internal class LoginUseCase @Inject constructor(
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher,
-    private val repository: LoginRepository,
+    private val repository: LoginRepository
 ) {
 
-    suspend operator fun invoke(username:String, password:String): User? = withContext(dispatcher) {
+    suspend operator fun invoke(username: String, password: String): User? = withContext(dispatcher) {
         repository.login(username, password)
     }
 }
