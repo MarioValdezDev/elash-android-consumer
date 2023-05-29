@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".home.presentation.HomeActivity">
 
+    <include
+        android:id="@+id/home"
+        layout="@layout/layout_home" />
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/layout_home_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        tools:layout_width="@dimen/home_act_drawer_layout_width" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

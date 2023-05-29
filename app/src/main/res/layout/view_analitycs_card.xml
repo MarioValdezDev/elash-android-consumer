@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/s_margin"
+    app:cardElevation="@dimen/xxs_margin"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/s_margin">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/l_margin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/l_margin" />
+
+
+        <ImageView
+            android:id="@+id/image_view_upcome_arrow"
+            android:layout_width="@dimen/s_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:src="@drawable/icv_arrow_upward"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_out"
+            app:layout_constraintStart_toEndOf="@+id/text_view_out"
+            app:layout_constraintTop_toTopOf="@+id/text_view_out"
+            app:tint="@color/red" />
+
+        <TextView
+            android:id="@+id/text_view_out_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xs_margin"
+            android:layout_marginBottom="@dimen/xxs_margin"
+            android:fontFamily="@font/roboto_light"
+            android:text="Total Egresos:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/l_text_size"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xs_margin"
+            android:layout_marginBottom="@dimen/xxs_margin"
+            android:fontFamily="@font/roboto_light"
+            android:text="$12,000"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/xl_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/image_view_upcome_arrow"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/text_view_out_description" />
+
+        <TextView
+            android:id="@+id/text_view_in_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xs_margin"
+            android:layout_marginBottom="@dimen/xxs_margin"
+            android:fontFamily="@font/roboto_light"
+            android:text="Total Ingresos:"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/l_text_size"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/text_view_out" />
+
+        <TextView
+            android:id="@+id/text_view_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/xs_margin"
+            android:layout_marginBottom="@dimen/xxs_margin"
+            android:fontFamily="@font/roboto_light"
+            android:text="$12,000"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/xl_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/image_view_income_arrow"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/text_view_in_description" />
+
+        <ImageView
+            android:id="@+id/image_view_income_arrow"
+            android:layout_width="@dimen/s_icon_size"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/s_margin"
+            android:src="@drawable/icv_arrow_downward"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_view_in"
+            app:layout_constraintTop_toTopOf="@+id/text_view_in"
+            app:tint="@color/light_green" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
