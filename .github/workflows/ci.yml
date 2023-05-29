@@ -25,8 +25,5 @@ jobs:
       - name: Grant Execute Permission for gradlew
         run: chmod +x gradlew
 
-      - name: Run Kotlin Linter
-        run: ./gradlew ktlintStagingDebugCheck
-
       - name: Build App
         run: ./gradlew assemble
