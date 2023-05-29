@@ -9,6 +9,5 @@ import androidx.room.PrimaryKey
 data class LocalProduct(
     @PrimaryKey val idProduct: String,
     val name: String,
-    val price: String,
-) {
-}
+    val price: String
+)

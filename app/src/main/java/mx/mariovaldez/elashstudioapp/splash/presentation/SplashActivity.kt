@@ -1,11 +1,10 @@
 package mx.mariovaldez.elashstudioapp.splash.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import mx.mariovaldez.elashstudioapp.R
 import mx.mariovaldez.elashstudioapp.login.presentation.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun launchLogin(){
+    private fun launchLogin() {
         LoginActivity.launch(this)
         finish()
     }

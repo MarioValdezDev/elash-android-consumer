@@ -13,5 +13,4 @@ data class LocalSale(
     val saleDate: String,
     val quantity: String,
     val idConsumer: String?
-) {
-}
+)

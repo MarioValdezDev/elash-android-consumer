@@ -11,13 +11,12 @@ import mx.mariovaldez.elashstudioapp.util.createId
 import mx.mariovaldez.elashstudioapp.util.encrypt
 import javax.inject.Inject
 
-
 internal class LocalDataSource @Inject constructor(
     private val userDao: UserDao,
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher
-){
+) {
 
-    fun login(username:String, password:String): User? {
+    fun login(username: String, password: String): User? {
         userDao.observeUser(username)?.let {
             if (it.password == password.encrypt()) {
                 return it.toExternal()
@@ -82,7 +81,4 @@ internal class LocalDataSource @Inject constructor(
         userDao.upsert(user)
         return user.toExternal()
     }
-
-
-
 }

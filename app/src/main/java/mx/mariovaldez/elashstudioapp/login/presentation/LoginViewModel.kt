@@ -12,11 +12,10 @@ import mx.mariovaldez.elashstudioapp.login.domain.usecases.LoginUseCase
 import mx.mariovaldez.elashstudioapp.login.domain.usecases.RegisterDefaultUserUserUseCase
 import javax.inject.Inject
 
-
 @HiltViewModel
 internal class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
-    private val registerDefaultUserUserUseCase: RegisterDefaultUserUserUseCase,
+    private val registerDefaultUserUserUseCase: RegisterDefaultUserUserUseCase
 ) : ViewModel() {
 
     private val _state: MutableStateFlow<State?> = MutableStateFlow(null)
@@ -30,7 +29,7 @@ internal class LoginViewModel @Inject constructor(
 
     fun validateCredentials(
         username: String,
-        password: String,
+        password: String
     ) = viewModelScope.launch {
         _isSignInButtonEnabled.value = username.isNotEmpty() && password.isNotEmpty()
     }
@@ -54,7 +53,6 @@ internal class LoginViewModel @Inject constructor(
                 .onSuccess {
                     println(it)
                     _state.value = State.Success
-
                 }
                 .onFailure {
                     println(it)
@@ -86,6 +84,5 @@ internal class LoginViewModel @Inject constructor(
         object ShowUserOrPasswordIncorrect : Event()
 
         object StartGettingUserLocation : Event()
-
     }
 }

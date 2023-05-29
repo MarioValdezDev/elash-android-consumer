@@ -14,7 +14,7 @@ internal class RegisterDefaultUserUserUseCase @Inject constructor(
     @DefaultDispatcher private val dispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(): User = withContext(dispatcher){
+    suspend operator fun invoke(): User = withContext(dispatcher) {
         repository.createDefaultAdminUser()
     }
 }

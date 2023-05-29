@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -21,8 +21,6 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.Priority
 import dagger.hilt.android.AndroidEntryPoint
-import mx.mariovaldez.elashstudioapp.R
-import mx.mariovaldez.elashstudioapp.app.domain.models.AppPermission
 import mx.mariovaldez.elashstudioapp.app.domain.models.AppPermission.AccessFineLocation
 import mx.mariovaldez.elashstudioapp.databinding.ActivityLoginBinding
 import mx.mariovaldez.elashstudioapp.home.presentation.HomeActivity
@@ -61,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
         setupLocationService()
         appPermissionActivityResultLauncher = registerActionsForAppPermissionRequest(
             this::onLocationPermissionGranted,
-            this::onLocationPermissionDenied,
+            this::onLocationPermissionDenied
         )
         setupObservers()
         setupListeners()
@@ -78,7 +76,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-
         viewModel.state.observe(this, ::handle)
         viewModel.event.observe(this, ::handle)
         viewModel.isSignInButtonEnabled.observe(this, ::setupEnableSignInButton)
@@ -92,7 +89,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         binding.apply {
-
             emailTextInputEditText.addTextChangedListener {
                 validateCredentials()
             }
@@ -103,7 +99,6 @@ class LoginActivity : AppCompatActivity() {
                 viewModel.validateUserLocation(isAppPermissionGranted(AccessFineLocation))
             }
         }
-
     }
 
     private fun validateCredentials() {
@@ -112,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
             println(passwordTextInputEditText.text.toString().trim())
             viewModel.validateCredentials(
                 emailTextInputEditText.text.toString().trim(),
-                passwordTextInputEditText.text.toString().trim(),
+                passwordTextInputEditText.text.toString().trim()
             )
         }
     }
@@ -149,16 +144,16 @@ class LoginActivity : AppCompatActivity() {
         when (event) {
             LoginViewModel.Event.RequestUserLocationAppPermission -> launchAppPermissionRequest(
                 appPermissionActivityResultLauncher,
-                AccessFineLocation,
+                AccessFineLocation
             )
 
             is LoginViewModel.Event.ShowError -> {
-                //showError(event.message)}
+                // showError(event.message)}
             }
 
             LoginViewModel.Event.StartGettingUserLocation -> onLocationPermissionGranted()
             LoginViewModel.Event.ShowUserOrPasswordIncorrect -> {
-                //do something
+                // do something
             }
         }.exhaustive
     }
@@ -209,7 +204,7 @@ class LoginActivity : AppCompatActivity() {
         with(binding) {
             viewModel.login(
                 emailTextInputEditText.text.toString(),
-                passwordTextInputEditText.text.toString(),
+                passwordTextInputEditText.text.toString()
             )
         }
         fusedLocationClient?.lastLocation
@@ -218,7 +213,7 @@ class LoginActivity : AppCompatActivity() {
                     with(binding) {
                         viewModel.login(
                             emailTextInputEditText.text.toString(),
-                            passwordTextInputEditText.text.toString(),
+                            passwordTextInputEditText.text.toString()
                         )
                     }
                 } else {
@@ -232,7 +227,7 @@ class LoginActivity : AppCompatActivity() {
     private fun createLocationRequest() {
         locationRequest = LocationRequest.Builder(
             Priority.PRIORITY_HIGH_ACCURACY,
-            LOCATION_REQUEST_INTERVAL,
+            LOCATION_REQUEST_INTERVAL
         ).apply {
             val builder = LocationSettingsRequest.Builder().addLocationRequest(this.build())
             val client = LocationServices.getSettingsClient(this@LoginActivity)
@@ -244,14 +239,13 @@ class LoginActivity : AppCompatActivity() {
                     if (exception is ResolvableApiException) {
                         try {
                             resolutionForResult?.launch(
-                                IntentSenderRequest.Builder(exception.resolution).build(),
+                                IntentSenderRequest.Builder(exception.resolution).build()
                             )
                         } catch (sendIntentException: IntentSender.SendIntentException) {
                             Timber.e(sendIntentException)
                         }
                     }
                 }
-
         }.build()
        /* locationRequest = LocationRequest.create().apply {
             interval = LOCATION_REQUEST_INTERVAL
@@ -286,7 +280,7 @@ class LoginActivity : AppCompatActivity() {
                     with(binding) {
                         viewModel.login(
                             emailTextInputEditText.text.toString(),
-                            passwordTextInputEditText.text.toString(),
+                            passwordTextInputEditText.text.toString()
                         )
                     }
                 }

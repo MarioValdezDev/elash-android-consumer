@@ -13,7 +13,7 @@ data class LocalUser(
     val password: String,
     val idEmployee: String,
     val idRole: String,
-    val idStatus: String,
+    val idStatus: String
 )
 
 fun LocalUser.toExternal() = User(

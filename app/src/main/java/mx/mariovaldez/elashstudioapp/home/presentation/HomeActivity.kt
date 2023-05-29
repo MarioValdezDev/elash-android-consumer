@@ -2,8 +2,8 @@ package mx.mariovaldez.elashstudioapp.home.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import mx.mariovaldez.elashstudioapp.R
 
 class HomeActivity : AppCompatActivity() {
@@ -11,7 +11,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
     }
-
 
     companion object {
 

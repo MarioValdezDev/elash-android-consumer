@@ -11,7 +11,7 @@ fun String.encrypt(): String {
     val secretKeySpec = SecretKeySpec("ElashDatabaseKey".toByteArray(), "AES")
     val iv = ByteArray(16)
     val charArray = this.toCharArray()
-    for (i in charArray.indices){
+    for (i in charArray.indices) {
         iv[i] = charArray[i].code.toByte()
     }
     val ivParameterSpec = IvParameterSpec(iv)
@@ -37,7 +37,7 @@ fun String.decrypt(): String {
     val secretKeySpec = SecretKeySpec("ElashDatabaseKey".toByteArray(), "AES")
     val iv = ByteArray(16)
     val charArray = this.toCharArray()
-    for (i in charArray.indices){
+    for (i in charArray.indices) {
         iv[i] = charArray[i].code.toByte()
     }
     val ivParameterSpec = IvParameterSpec(iv)
