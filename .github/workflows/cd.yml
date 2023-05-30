@@ -3,11 +3,8 @@ name: Android Pull Request & Master CI & CD to Firebase
 on:
   pull_request:
     branches:
-      - 'master'
-  push:
-    branches:
-      - 'master'
-
+      - 'main'
+      
 jobs:
 
   build:
