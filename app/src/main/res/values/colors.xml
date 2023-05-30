@@ -133,4 +133,5 @@
     <color name="dark_onCustomColor4">#FF4D1660</color>
     <color name="dark_CustomColor4Container">#FF662F79</color>
     <color name="dark_onCustomColor4Container">#FFFAD7FF</color>
+    <color name="light_green">#3DCF67</color>
 </resources>

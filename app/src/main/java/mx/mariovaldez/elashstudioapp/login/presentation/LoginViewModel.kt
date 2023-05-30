@@ -51,11 +51,9 @@ internal class LoginViewModel @Inject constructor(
                 loginUseCase(username, password)
             }
                 .onSuccess {
-                    println(it)
                     _state.value = State.Success
                 }
                 .onFailure {
-                    println(it)
                     _state.value = State.Error
                 }
         }

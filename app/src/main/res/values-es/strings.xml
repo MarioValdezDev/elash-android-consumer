@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ElashStudio</string>
+
+    <string name="sale_item">Ventas</string>
+    <string name="curses_item">Cursos</string>
+    <string name="employees_item">Empleados</string>
+    <string name="products_item">Productos</string>
+
+</resources>
