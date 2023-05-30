@@ -7,14 +7,11 @@ import mx.mariovaldez.elashstudioapp.databinding.ViewSectionBinding
 import mx.mariovaldez.elashstudioapp.home.presentation.models.SectionUI
 
 internal class SectionsAdapter(
-    private val isSelectable: Boolean = false,
     private val listener: (String) -> Unit,
 
 ) : RecyclerView.Adapter<SectionsAdapter.ViewHolder>() {
 
-    private val sections: MutableList<SectionUI> = mutableListOf<SectionUI>()
-    private var selectedItemPosition = -1
-    private var lastItemSelectedPosition = -1
+    private val sections: MutableList<SectionUI> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ViewSectionBinding.inflate(
@@ -30,7 +27,7 @@ internal class SectionsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(sections[position], position)
+        holder.bind(sections[position])
     }
 
     override fun getItemCount(): Int = sections.size
@@ -44,7 +41,7 @@ internal class SectionsAdapter(
         private val binding: ViewSectionBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(section: SectionUI, position: Int) = with(binding) {
+        fun bind(section: SectionUI) = with(binding) {
             iconImageView.setImageDrawable(section.icon)
             labelTextView.text = section.label
             containerCardView.setOnClickListener {
