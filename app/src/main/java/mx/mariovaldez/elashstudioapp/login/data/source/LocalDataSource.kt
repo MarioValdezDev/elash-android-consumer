@@ -70,7 +70,7 @@ internal class LocalDataSource @Inject constructor(
     }
 
     suspend fun createDefaultAdminUser(): User {
-        val user = LocalUser(
+        val admin = LocalUser(
             "admin",
             "1",
             "admin".encrypt(),
@@ -78,7 +78,16 @@ internal class LocalDataSource @Inject constructor(
             "1",
             "1"
         )
-        userDao.upsert(user)
-        return user.toExternal()
+        val employee= LocalUser(
+            "elash",
+            "1",
+            "elash".encrypt(),
+            "1",
+            "2",
+            "1"
+        )
+        userDao.upsert(admin)
+        userDao.upsert(employee)
+        return admin.toExternal()
     }
 }

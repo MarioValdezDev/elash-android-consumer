@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import mx.mariovaldez.elashstudioapp.authentication.domain.models.Roles
 import mx.mariovaldez.elashstudioapp.login.domain.usecases.LoginUseCase
 import mx.mariovaldez.elashstudioapp.login.domain.usecases.RegisterDefaultUserUserUseCase
 import javax.inject.Inject
@@ -51,7 +52,20 @@ internal class LoginViewModel @Inject constructor(
                 loginUseCase(username, password)
             }
                 .onSuccess {
-                    _state.value = State.Success
+                    _state.value =
+                        when (it?.idRole) {
+                            Roles.ADMIN.id -> {
+                                State.SuccessAdmin
+                            }
+
+                            Roles.EMPLOYEE.id -> {
+                                State.SuccessEmployee
+                            }
+
+                            else -> {
+                                State.Error
+                            }
+                        }
                 }
                 .onFailure {
                     _state.value = State.Error
@@ -69,7 +83,8 @@ internal class LoginViewModel @Inject constructor(
 
     sealed class State {
         object Loading : State()
-        object Success : State()
+        object SuccessAdmin : State()
+        object SuccessEmployee : State()
         object Error : State()
     }
 
