@@ -24,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import mx.mariovaldez.elashstudioapp.app.domain.models.AppPermission.AccessFineLocation
 import mx.mariovaldez.elashstudioapp.databinding.ActivityLoginBinding
 import mx.mariovaldez.elashstudioapp.home.presentation.HomeActivity
+import mx.mariovaldez.elashstudioapp.homeEmployee.presentation.HomeEmployeeActivity
 import mx.mariovaldez.elashstudioapp.ktx.clearAnimationTransition
 import mx.mariovaldez.elashstudioapp.ktx.exhaustive
 import mx.mariovaldez.elashstudioapp.ktx.gone
@@ -129,9 +130,15 @@ class LoginActivity : AppCompatActivity() {
     private fun handle(state: LoginViewModel.State?) {
         when (state) {
             LoginViewModel.State.Loading -> showProgress()
-            LoginViewModel.State.Success -> {
+            LoginViewModel.State.SuccessAdmin -> {
                 hideProgress()
                 HomeActivity.launch(this)
+                clearAnimationTransition()
+                finish()
+            }
+            LoginViewModel.State.SuccessEmployee -> {
+                hideProgress()
+                HomeEmployeeActivity.launch(this)
                 clearAnimationTransition()
                 finish()
             }
@@ -295,7 +302,6 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val LOCATION_REQUEST_INTERVAL: Long = 10000
-        private const val FASTEST_LOCATION_REQUEST_INTERVAL: Long = 5000
         private const val REQUESTING_LOCATION_UPDATES_KEY: String =
             "REQUESTING_LOCATION_UPDATES_KEY"
 
