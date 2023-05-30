@@ -13,7 +13,7 @@ import mx.mariovaldez.elashstudioapp.ktx.viewBinding
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
-    private val binding: ActivityHomeBinding by viewBinding (
+    private val binding: ActivityHomeBinding by viewBinding(
         ActivityHomeBinding::inflate
     )
     private val viewModel: HomeViewModel by viewModels()
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
         setupSections()
     }
 
-    private fun setupSections(){
+    private fun setupSections() {
         val sectionsAdapter = SectionsAdapter { id ->
             viewModel.sectionClicked(id)
         }.apply {
