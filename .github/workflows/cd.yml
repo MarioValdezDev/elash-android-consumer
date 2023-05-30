@@ -4,11 +4,9 @@ on:
   pull_request:
     branches:
       - 'master'
-      - 'develop'
   push:
     branches:
       - 'master'
-      - 'develop'
 
 jobs:
 
@@ -35,27 +33,4 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
-
-  apk:
-    name: Generate APK
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 🛫 Checkout
-        uses: actions/checkout@v3
-
-      - name: ⚙ Setup JDK 17
-        uses: actions/setup-java@v3
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
-
-      - name: 🔄😏 Build debug APK
-        run: bash ./gradlew assembleDebug --stacktrace
-      - name: ⏫⏫ Upload APK
-        uses: actions/upload-artifact@v1
-        with:
-          name: app
-          path: app/build/outputs/apk/debug/app-debug.apk
+          file: app/build/outputs/apk/debug/mx.mariovaldez.elashstudioapp_elash_studio_debug_1.0_V1.apk
