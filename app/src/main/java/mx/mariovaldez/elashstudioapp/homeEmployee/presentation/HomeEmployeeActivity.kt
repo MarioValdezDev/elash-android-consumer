@@ -8,13 +8,15 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import mx.mariovaldez.elashstudioapp.databinding.ActivityHomeEmployeeBinding
 import mx.mariovaldez.elashstudioapp.homeEmployee.presentation.adapters.SectionsEmployeeAdapter
+import mx.mariovaldez.elashstudioapp.ktx.observe
 import mx.mariovaldez.elashstudioapp.ktx.viewBinding
+import mx.mariovaldez.elashstudioapp.sale.presentation.SaleActivity
 
 @AndroidEntryPoint
 class HomeEmployeeActivity : AppCompatActivity() {
 
     private val binding: ActivityHomeEmployeeBinding by viewBinding(
-        ActivityHomeEmployeeBinding::inflate
+        ActivityHomeEmployeeBinding::inflate,
     )
 
     private val viewModel: HomeEmployeeViewModel by viewModels()
@@ -24,11 +26,12 @@ class HomeEmployeeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupSections()
+        setupObservers()
     }
 
     private fun setupSections() {
         val sectionsAdapter = SectionsEmployeeAdapter { id ->
-            println("click section $id")
+            viewModel.onSectionClicked(id)
         }.apply {
             addSections(viewModel.findSections())
         }
@@ -38,6 +41,20 @@ class HomeEmployeeActivity : AppCompatActivity() {
                 adapter = sectionsAdapter
             }
         }
+    }
+
+    private fun setupObservers(){
+        viewModel.event.observe(this, ::handle)
+    }
+
+    private fun handle(event: HomeEmployeeViewModel.Event){
+        when(event){
+            is HomeEmployeeViewModel.Event.NavigateToChooseArticle -> SaleActivity.launch(this)
+            else -> {
+
+            }
+        }
+
     }
 
     companion object {
