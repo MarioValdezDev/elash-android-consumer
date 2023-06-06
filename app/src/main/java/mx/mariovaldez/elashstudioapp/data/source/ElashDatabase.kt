@@ -28,7 +28,7 @@ import mx.mariovaldez.elashstudioapp.data.source.local.entities.LocalUser
         LocalUser::class
     ],
     version = 1,
-    exportSchema = false
+    exportSchema = true,
 )
 abstract class ElashDatabase : RoomDatabase() {
 
