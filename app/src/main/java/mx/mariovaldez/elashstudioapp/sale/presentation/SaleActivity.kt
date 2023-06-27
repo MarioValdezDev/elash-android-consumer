@@ -14,6 +14,7 @@ import mx.mariovaldez.elashstudioapp.databinding.ActivitySaleBinding
 import mx.mariovaldez.elashstudioapp.ktx.observe
 import mx.mariovaldez.elashstudioapp.ktx.viewBinding
 import mx.mariovaldez.elashstudioapp.sale.presentation.chooseArticle.ChooseProductFragment
+import mx.mariovaldez.elashstudioapp.sale.presentation.processSale.ProcessSaleFragment
 
 @AndroidEntryPoint
 class SaleActivity : AppCompatActivity() {
@@ -54,6 +55,7 @@ class SaleActivity : AppCompatActivity() {
 
         val fragment: Fragment = when (event) {
             is SaleViewModel.Event.NavigateToChooseArticle -> ChooseProductFragment.newInstance()
+            is SaleViewModel.Event.NavigateToProcessSale -> ProcessSaleFragment.newInstance()
         }
 
         supportFragmentManager.beginTransaction()

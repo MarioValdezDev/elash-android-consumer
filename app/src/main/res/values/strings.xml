@@ -5,9 +5,14 @@
     <string name="curses_item">Curses</string>
     <string name="employees_item">Employees</string>
     <string name="products_item">Products</string>
+    <string name="next">Next</string>
 
     <!-- HOME EMPLOYEE ACTIVITY -->
     <string name="act_home_emp_sale">Do Sale</string>
     <string name="act_home_emp_spent">Verify Spent</string>
+
+    <!-- CHOOSE FRAGMENT -->
+    <string name="frag_choose_prod_title">Select Item</string>
+    <string name="frag_process_sale_title">Finish Sale</string>
 
 </resources>

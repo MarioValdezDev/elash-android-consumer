@@ -8,10 +8,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import mx.mariovaldez.elashstudioapp.sale.presentation.models.ProductUI
 import javax.inject.Inject
 
 @HiltViewModel
 class SaleViewModel @Inject constructor() : ViewModel() {
+
+    private lateinit var product: ProductUI
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.IncompletedRequirement)
     val state: StateFlow<State> get() = _state
@@ -21,6 +24,10 @@ class SaleViewModel @Inject constructor() : ViewModel() {
 
     fun onRequirementCompleted(event: Event) {
         viewModelScope.launch { _event.emit(event) }
+    }
+
+    fun saveProduct(productSelected: ProductUI) {
+        product = productSelected
     }
 
     sealed class State {
@@ -38,9 +45,13 @@ class SaleViewModel @Inject constructor() : ViewModel() {
 
         abstract val type: EventType
 
-        data class  NavigateToChooseArticle(
+        data class NavigateToChooseArticle(
             override val type: EventType = EventType.NAVIGATION
-        ): Event()
+        ) : Event()
+
+        data class NavigateToProcessSale(
+            override val type: EventType = EventType.NAVIGATION
+        ) : Event()
     }
 
     enum class EventType {
