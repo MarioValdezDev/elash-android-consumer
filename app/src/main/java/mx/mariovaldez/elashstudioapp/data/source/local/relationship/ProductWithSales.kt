@@ -7,7 +7,7 @@ import mx.mariovaldez.elashstudioapp.data.source.local.entities.LocalEmployee
 import mx.mariovaldez.elashstudioapp.data.source.local.entities.LocalProduct
 import mx.mariovaldez.elashstudioapp.data.source.local.entities.LocalSale
 
-data class ProductWithSales(
+internal data class ProductWithSales(
 
     @Embedded val sale: LocalSale,
 
