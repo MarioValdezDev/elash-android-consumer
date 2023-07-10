@@ -17,7 +17,7 @@ buildscript {
         hilt_version = "2.43.2"
         junit_version = "4.13.2"
         kotlin_coroutines_version = "1.6.4"
-        kotlin_version = "1.8.10"
+        kotlin_version = "1.9.0"
         lifecycle_version = "2.6.1"
         logging_interceptor_version = "4.10.0"
         room_version = "2.5.1"
